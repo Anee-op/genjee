@@ -16,9 +16,10 @@ CHROMA_HOST = "localhost"
 CHROMA_PORT = 8002  # <--- change port if needed
 
 # Google API key
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+
 if not GEMINI_API_KEY:
-    raise ValueError("GEMINI_API_KEY not set in environment variables")
+    raise ValueError("GEMINI_API_KEY / GOOGLE_API_KEY not set")
 
 # Google embedding model (384-dimensional)
 EMBEDDING_MODEL = "models/text-embedding-004"
