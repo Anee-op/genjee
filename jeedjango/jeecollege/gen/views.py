@@ -1,8 +1,7 @@
 
 from django.shortcuts import render
 import os
-from google import genai
-from chromadb import HttpClient
+from google.generativeai import genai
 import chromadb
 from chromadb.config import Settings
 from chromadb.utils.embedding_functions import GoogleGenerativeAiEmbeddingFunction
