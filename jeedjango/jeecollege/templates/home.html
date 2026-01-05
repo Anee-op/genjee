@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ page_title }}</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 80px auto;
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 15px;
+        }
+
+        a.college-card {
+            display: block;
+            padding: 16px 20px;
+            border-radius: 8px;
+            background: #f1f5ff;
+            text-decoration: none;
+            color: #1a237e;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+
+        a.college-card:hover {
+            background: #3f51b5;
+            color: #ffffff;
+            transform: translateY(-2px);
+        }
+
+        .footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>JEECollege Q&A</h1>
+        <p class="subtitle">
+            Select a college to ask questions based on verified student responses
+        </p>
+
+        <ul>
+            {% for slug, name in colleges.items %}
+                <li>
+                    <a class="college-card" href="{% url 'college_qa' college_slug=slug %}">
+                        {{ name }}
+                    </a>
+                </li>
+            {% empty %}
+                <li>No colleges are currently available.</li>
+            {% endfor %}
+        </ul>
+
+        <div class="footer">
+            Project: <strong>jeecollege</strong>
+        </div>
+    </div>
+
+</body>
+</html>
