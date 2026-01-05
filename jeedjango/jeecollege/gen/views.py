@@ -54,7 +54,7 @@ chroma_client = chromadb.Client(
 
 def generate_rag_response(user_query: str, college_slug: str) -> str:
     try:
-        collection = chroma_client.get_collection (
+        collection = chroma_client.get_or_create_collection(
             name=college_slug,
             embedding_function=GoogleGenerativeAiEmbeddingFunction(
                 api_key=GEMINI_API_KEY,

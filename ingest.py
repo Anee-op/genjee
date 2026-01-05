@@ -68,7 +68,7 @@ if COLLEGE_SLUG in existing_collections:
     client.delete_collection(name=COLLEGE_SLUG)
 
 # ---------------- CREATE NEW COLLECTION ----------------
-collection = client.create_collection(
+collection = client.get_or_create_collection(
     name=COLLEGE_SLUG,
     embedding_function=embedding_function
 )
