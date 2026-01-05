@@ -40,19 +40,21 @@ def home_view(request):
 
 # ---------------- CHROMA SETUP ----------------
 
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CHROMA_DIR = os.path.join(BASE_DIR, "chroma")
+
 chroma_client = chromadb.Client(
     Settings(
-        persist_directory="./chroma",
-        anonymized_telemetry=False,
+        persist_directory=CHROMA_DIR,
+        anonymized_telemetry=False
     )
 )
-
 
 # ---------------- RAG CORE ----------------
 
 def generate_rag_response(user_query: str, college_slug: str) -> str:
     try:
-        collection = chroma_client.get_collection(
+        collection = chroma_client.get_collection (
             name=college_slug,
             embedding_function=GoogleGenerativeAiEmbeddingFunction(
                 api_key=GEMINI_API_KEY,

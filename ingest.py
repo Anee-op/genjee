@@ -44,9 +44,13 @@ for column in df.columns:
         doc_id += 1
 
 # ---------------- CHROMA CLIENT ----------------
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+CHROMA_DIR = os.path.join(BASE_DIR, "chroma")
+
 client = chromadb.Client(
     Settings(
-        persist_directory="./chroma",
+        persist_directory=CHROMA_DIR,
         anonymized_telemetry=False
     )
 )
